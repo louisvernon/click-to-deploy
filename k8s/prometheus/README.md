@@ -197,7 +197,7 @@ Generate a random password for Grafana:
 sudo apt-get install -y pwgen base64
 
 # Set the Grafana password
-export GRAFANA_GENERATED_PASSWORD="$(pwgen 12 1 | tr -d '\n' | base64)"
+export GRAFANA_GENERATED_PASSWORD="$(head -c 12 /dev/urandom |  base64 | base64 | tr -d '\r')"
 ```
 
 Define the size of Prometheus StatefulSet:
